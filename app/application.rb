@@ -3,11 +3,12 @@
 
 class Application
 
-	@@items = [
-		Item.new("Marker", rand(0.01..9.99).round(2)),
-	  	Item.new("Tape", rand(0.01..9.99).round(2)),
-		Item.new("Glue", rand(0.01..9.99).round(2))
-	]  
+	Item.seed
+	# @@items = [
+	# 	Item.new("Marker", rand(0.01..9.99).round(2)),
+	#   	Item.new("Tape", rand(0.01..9.99).round(2)),
+	# 	Item.new("Glue", rand(0.01..9.99).round(2))
+	# ]  
 
 	def call(env)
 
@@ -22,7 +23,8 @@ class Application
 
 		  find_item = req.path.split("/items/").last
 
-		  item = @@items.find do |item|
+		  # item = @@items.find do |item|
+		  item = Item.all.find do |item|
 		  	item.name.downcase == find_item.downcase
 		  end
 
